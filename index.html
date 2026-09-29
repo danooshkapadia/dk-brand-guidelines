@@ -31,7 +31,7 @@
     button { font: inherit; }
     .skip { position: absolute; z-index: 10; top: -5rem; left: 1rem; padding: 1rem; background: var(--white); color: var(--black); font-family: var(--sans); }
     .skip:focus { top: 1rem; }
-    .site-nav { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; gap: 24px; width: var(--page); min-height: 56px; margin-inline: auto; padding: 5px clamp(20px, 5vw, 80px); background: rgba(255,255,255,.97); border-bottom: 1px solid var(--black); font: 700 12px/1.2 var(--sans); letter-spacing: .04em; }
+    .site-nav { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; gap: 24px; width: var(--page); min-height: 56px; margin-inline: auto; padding: 5px clamp(20px, 5vw, 80px); background: var(--paper); border-bottom: 1px solid var(--black); font: 700 12px/1.2 var(--sans); letter-spacing: .04em; }
     .site-nav .brand { white-space: nowrap; text-decoration: none; }
     .site-nav .nav-links { display: flex; align-items: center; gap: clamp(6px, 1vw, 14px); }
     .site-nav .nav-links a, .site-nav summary { display: inline-flex; align-items: center; min-height: 44px; padding: 0 6px; text-decoration: none; }
@@ -166,7 +166,7 @@
       .site-nav summary::-webkit-details-marker { display: none; }
       .site-nav summary::after { content: ' +'; color: var(--red); margin-left: 8px; }
       .site-nav details[open] summary::after { content: ' −'; }
-      .site-nav .mobile-links { position: absolute; right: -20px; top: 45px; width: min(280px, 90vw); border-radius: 16px; display: grid; padding: 8px 14px 14px; background: var(--white); border: 1px solid var(--black); }
+      .site-nav .mobile-links { position: absolute; right: -20px; top: 45px; width: min(280px, 90vw); border-radius: 16px; display: grid; padding: 8px 14px 14px; background: var(--paper); border: 1px solid var(--black); }
       .site-nav .mobile-links a { min-height: 44px; display: flex; align-items: center; padding: 0 8px; text-decoration: none; }
       .spread { min-height: auto; padding: 25px 22px 70px; }
       .cover { min-height: 100svh; }
