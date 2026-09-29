@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The DK Consulting design system: three registers, one visual language.">
+  <title>DK Designer — Brand Guidelines v2</title>
+  <style>
+    :root {
+      --white: #FFFFFF;
+      --paper: #ECE3D7;
+      --soft: #F5F3EE;
+      --black: #000000;
+      --ink: #1A1A1A;
+      --khaki: #C5AA88;
+      --red: #CC0000;
+      --grey: #EAEAEA;
+      --sans: Helvetica, Arial, sans-serif;
+      --serif: Century, 'Century Old Style', serif;
+      --mono: 'SF Mono', 'JetBrains Mono', Menlo, monospace;
+      --hand: Caveat, cursive;
+      --page: min(1400px, 100%);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--white); font-family: var(--serif); }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .2em; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--red); outline-offset: 5px; }
+    p { margin: 0; }
+    button { font: inherit; }
+    .skip { position: absolute; z-index: 10; top: -5rem; left: 1rem; padding: 1rem; background: var(--white); color: var(--black); font-family: var(--sans); }
+    .skip:focus { top: 1rem; }
+    .page { width: var(--page); margin-inline: auto; }
+    .spread { min-height: min(900px, 100svh); padding: clamp(22px, 4vw, 70px) clamp(20px, 5vw, 80px) clamp(52px, 6vw, 96px); position: relative; }
+    .spread + .spread { border-top: .5px solid rgba(0,0,0,.35); }
+    .spread--black { background: var(--black); color: var(--white); }
+    .spread--paper { background: var(--paper); color: var(--black); }
+    .spread--soft { background: var(--soft); color: var(--black); }
+    .spread--white { background: var(--white); color: var(--ink); }
+    .meta { display: grid; grid-template-columns: minmax(45px, 1fr) auto auto; align-items: center; gap: clamp(12px, 3vw, 40px); min-height: 54px; padding-bottom: 16px; border-bottom: .5px solid currentColor; font: 12px/1.35 var(--sans); letter-spacing: .14em; text-transform: uppercase; }
+    .meta span:nth-child(2), .meta span:nth-child(3) { white-space: nowrap; }
+    .meta img { width: 44px; height: 44px; object-fit: contain; object-position: left center; }
+    .spread--black .meta img { filter: invert(1); }
+    .meta .datum { font-family: var(--mono); letter-spacing: 0; }
+    .section-head { display: grid; grid-template-columns: minmax(110px, 2fr) minmax(0, 10fr); gap: 2%; align-items: start; padding-top: clamp(56px, 8vw, 120px); }
+    .kicker { font: 700 12px/1.3 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--black); }
+    .section-head h2, .section-head h1 { margin: 0; font: 700 clamp(48px, 7vw, 90px)/.93 var(--sans); letter-spacing: -.045em; max-width: 13ch; }
+    .spread--white .kicker, .spread--soft .kicker, .spread--paper .kicker { color: var(--red); }
+    .spread--black .kicker { color: var(--white); }
+    .spread[data-dk-register="Working"] .section-head h2 { font-size: 40px; letter-spacing: -.025em; max-width: 26ch; }
+    .spread[data-dk-register="Explaining"] .section-head h2 { font-size: 48px; letter-spacing: -.02em; max-width: 20ch; }
+    .dek { margin-top: 28px; max-width: 57ch; font: 20px/1.45 var(--serif); }
+    .rule { border-top: 1px solid var(--black); }
+    .mini-label { font: 700 12px/1.3 var(--sans); text-transform: uppercase; letter-spacing: .14em; }
+    .mono { font-family: var(--mono); font-size: 12px; }
+    .red { color: var(--red); }
+    .cover { display: flex; flex-direction: column; min-height: 100svh; }
+    .cover .meta { color: var(--white); }
+    .cover-main { flex: 1; display: grid; align-content: center; padding-block: clamp(90px, 12vw, 170px); }
+    .cover h1 { margin: 0; max-width: 10ch; color: var(--khaki); font: 700 clamp(78px, 13.5vw, 190px)/.85 var(--sans); letter-spacing: -.055em; }
+    .cover h1 span { color: var(--white); display: block; }
+    .cover .subtitle { margin-top: 52px; font: 20px/1.45 var(--serif); max-width: 27ch; }
+    .cover .end-mark { align-self: end; color: var(--red); font: 700 90px/.8 var(--sans); }
+    .stance-text { grid-column: 2; margin-top: 90px; font: 700 clamp(48px, 6.6vw, 88px)/1.01 var(--sans); letter-spacing: -.04em; max-width: 13ch; }
+    .stance-text span { display: block; }
+    .stance-text span:last-child { color: var(--red); }
+    .bottom-note { margin-top: clamp(60px, 13vw, 180px); margin-left: 17%; max-width: 42ch; font: 20px/1.5 var(--serif); }
+    .register-intro { margin-top: 100px; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 2px solid currentColor; }
+    .register-intro > div { min-height: 280px; padding: 20px 20px 30px 0; border-bottom: .5px solid currentColor; }
+    .register-intro > div + div { border-left: .5px solid currentColor; padding-left: 20px; }
+    .register-intro strong { display: block; margin: 28px 0 14px; font: 700 clamp(28px, 3vw, 40px)/1 var(--sans); letter-spacing: -.025em; }
+    .register-intro p { max-width: 26ch; font: 17px/1.55 var(--serif); }
+    .register-intro .num { font: 12px var(--mono); }
+    .statement-demo { margin-top: 90px; border-top: 1px solid currentColor; padding-top: 24px; }
+    .statement-demo strong { display: block; max-width: 11ch; font: 700 clamp(68px, 10vw, 135px)/.9 var(--sans); letter-spacing: -.045em; color: var(--khaki); }
+    .statement-demo small { display: block; margin-top: 44px; font: 18px/1.4 var(--serif); }
+    .working-demo { margin-top: 80px; display: grid; grid-template-columns: 2fr 6fr 4fr; gap: 2%; border-top: 2px solid var(--black); }
+    .working-demo > * { padding-top: 18px; }
+    .working-demo h3 { margin: 0 0 28px; font: 700 40px/1.02 var(--sans); letter-spacing: -.025em; max-width: 21ch; }
+    .working-demo p { font: 17px/1.55 var(--serif); max-width: 55ch; }
+    .working-demo aside { border-top: .5px solid var(--black); padding-top: 18px; }
+    .working-demo aside p { margin-top: 15px; }
+    .explaining-demo { display: grid; grid-template-columns: 5fr 7fr; gap: 5%; align-items: start; margin-top: 80px; }
+    .explaining-demo h3 { margin: 0 0 30px; max-width: 12ch; font: 700 clamp(40px, 5vw, 60px)/1.05 var(--sans); letter-spacing: -.02em; }
+    .explaining-demo p { max-width: 38ch; font: 17px/1.5 var(--serif); }
+    .image-slot { min-height: 430px; border: 1px solid var(--black); display: grid; grid-template-rows: auto 1fr auto; padding: 22px; background: var(--white); }
+    .image-slot .slot-center { display: grid; place-items: center; text-align: center; font: 700 clamp(25px, 3vw, 40px)/1.1 var(--sans); letter-spacing: -.02em; color: var(--ink); }
+    .image-slot .slot-footer { padding-top: 14px; border-top: .5px solid var(--black); }
+    .slot-prompt { margin-top: 16px; font: 15px/1.45 var(--serif); }
+    .swatches { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2%; margin-top: 80px; }
+    .swatch { min-height: 290px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between; }
+    .swatch strong { font: 700 28px/1 var(--sans); }
+    .swatch .mono { border-top: .5px solid currentColor; padding-top: 14px; }
+    .swatch--white { border: 1px solid var(--black); background: var(--white); }
+    .swatch--paper { background: var(--paper); }
+    .swatch--black { color: var(--white); background: var(--black); }
+    .swatch--black strong { color: var(--khaki); }
+    .editorial-rows { margin-top: 80px; border-top: 2px solid var(--black); }
+    .editorial-row { display: grid; grid-template-columns: 1fr 3fr 2fr; gap: 2%; padding: 24px 0 35px; border-bottom: .5px solid var(--black); align-items: start; }
+    .editorial-row h3 { margin: 0; font: 700 clamp(27px, 3.2vw, 40px)/1.05 var(--sans); letter-spacing: -.025em; }
+    .editorial-row p { max-width: 38ch; font: 17px/1.5 var(--serif); }
+    .sample-cta { display: inline-block; padding: 14px 22px; color: var(--white); background: var(--red); text-decoration: none; font: 700 15px/1.2 var(--sans); }
+    .type-ratios { margin-top: 80px; border-top: 2px solid var(--black); }
+    .type-row { display: grid; grid-template-columns: 2fr 3fr 7fr; align-items: baseline; gap: 2%; padding: 30px 0; border-bottom: .5px solid var(--black); }
+    .type-row strong { font: 700 40px/1 var(--sans); letter-spacing: -.025em; }
+    .type-row span:last-child { font: 17px/1.5 var(--serif); }
+    .meta-example { margin-top: 90px; border-top: .5px solid var(--black); border-bottom: .5px solid var(--black); display: flex; align-items: center; gap: 32px; min-height: 90px; font: 12px/1.2 var(--sans); text-transform: uppercase; letter-spacing: .14em; }
+    .meta-example img { width: 42px; height: 42px; }
+    .meta-example span:last-child { margin-left: auto; font-family: var(--mono); letter-spacing: 0; }
+    .meta-caption { margin-top: 34px; max-width: 54ch; font: 17px/1.55 var(--serif); }
+    .grid-demo { margin-top: 86px; display: grid; grid-template-columns: repeat(12, 1fr); gap: 2%; height: 360px; }
+    .grid-demo span { display: flex; align-items: flex-end; padding-bottom: 14px; border-top: 2px solid var(--black); border-bottom: .5px solid var(--black); font: 12px var(--mono); }
+    .grid-note { margin-top: 28px; font: 17px/1.5 var(--serif); }
+    .icon-set { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2%; margin-top: 85px; }
+    .icon-set > div { border-top: 1px solid var(--black); padding-top: 24px; min-height: 180px; }
+    .icon-set svg { width: 44px; height: 44px; display: block; margin-bottom: 26px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; stroke-linejoin: square; }
+    .hand-demo { margin-top: 75px; display: grid; grid-template-columns: 5fr 7fr; gap: 4%; align-items: end; }
+    .hand-demo blockquote { margin: 0; max-width: 9ch; font: 400 clamp(50px, 7vw, 100px)/.95 var(--hand); }
+    .hand-demo p { padding-top: 20px; border-top: 1px solid var(--black); font: 17px/1.55 var(--serif); }
+    .logo-demo { display: grid; grid-template-columns: 1fr 1fr; gap: 5%; margin-top: 88px; }
+    .logo-demo > div { min-height: 300px; border-top: 2px solid var(--black); padding-top: 24px; }
+    .logo-demo img { height: 90px; width: auto; max-width: 65%; object-fit: contain; object-position: left center; margin: 35px 0; }
+    .tier-list { margin-top: 75px; border-top: 2px solid var(--black); }
+    .tier-list article { display: grid; grid-template-columns: 2fr 4fr 6fr; gap: 2%; padding: 26px 0 35px; border-bottom: .5px solid var(--black); }
+    .tier-list h3 { margin: 0; font: 700 clamp(24px, 3vw, 36px)/1 var(--sans); }
+    .tier-list p { font: 17px/1.5 var(--serif); max-width: 46ch; }
+    .back { min-height: 80svh; display: flex; flex-direction: column; }
+    .back .close { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .back h2 { margin: 0 0 50px; font: 700 clamp(66px, 11vw, 145px)/.9 var(--sans); letter-spacing: -.045em; max-width: 9ch; }
+    .back .wordmark { width: min(560px, 80%); max-height: 110px; object-position: left; }
+    .back .signature { width: 200px; height: auto; margin: 40px 0 0 auto; }
+    .back footer { display: flex; justify-content: space-between; border-top: .5px solid var(--black); padding-top: 18px; font: 12px/1.3 var(--mono); }
+    .contents { margin-top: 35px; display: flex; flex-wrap: wrap; gap: 10px 22px; font: 12px/1.4 var(--sans); text-transform: uppercase; letter-spacing: .1em; }
+    .contents a { text-decoration: none; border-bottom: 1px solid currentColor; }
+    .contents a:hover { color: var(--red); }
+    @media (max-width: 800px) {
+      .spread { min-height: auto; padding: 25px 22px 70px; }
+      .cover { min-height: 100svh; }
+      .cover h1 { font-size: clamp(69px, 14vw, 120px); }
+      .meta { grid-template-columns: 44px 1fr; }
+      .meta span:nth-child(3) { display: none; }
+      .section-head { grid-template-columns: 1fr; gap: 20px; padding-top: 70px; }
+      .section-head h2 { font-size: clamp(48px, 10vw, 74px); }
+      .stance-text, .bottom-note { grid-column: auto; margin-left: 0; }
+      .register-intro, .swatches, .working-demo, .explaining-demo, .editorial-row, .type-row, .hand-demo, .logo-demo, .tier-list article { grid-template-columns: 1fr; }
+      .register-intro > div + div { border-left: 0; padding-left: 0; }
+      .register-intro > div { min-height: auto; padding-bottom: 45px; }
+      .working-demo > * + * { border-top: .5px solid var(--black); }
+      .explaining-demo { gap: 28px; }
+      .editorial-row { gap: 16px; }
+      .type-row { gap: 12px; }
+      .grid-demo { height: 220px; }
+      .grid-demo span { font-size: 10px; }
+      .icon-set { grid-template-columns: 1fr; }
+      .meta-example { flex-wrap: wrap; gap: 15px; padding: 15px 0; }
+      .meta-example span:last-child { margin-left: 0; }
+    }
+    @media print {
+      @page { size: A4; margin: 0; }
+      html { scroll-behavior: auto; }
+      .spread { page-break-after: always; break-after: page; min-height: 297mm; padding: 18mm; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      .spread:last-child { page-break-after: auto; }
+      .contents { display: none; }
+      a { text-decoration: none; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to guidelines</a>
+  <main class="page" id="main">
+    <section class="spread spread--black cover" id="cover" data-dk-register="Statement" aria-labelledby="cover-title">
+      <div class="meta"><img src="assets/logo-dk-box.svg" alt="DK Consulting"><span>DK Designer / Brand Guidelines</span><span class="datum">V2 · 2026</span></div>
+      <div class="cover-main"><h1 id="cover-title">Visually<span>powerful.</span></h1><p class="subtitle">A design system for work that needs to be seen, read, and understood.</p></div>
+      <span class="end-mark" aria-hidden="true">.</span>
+    </section>
+
+    <section class="spread spread--paper" id="stance" data-dk-register="Statement" aria-labelledby="stance-title">
+      <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>The stance</span><span class="datum">01</span></div>
+      <div class="section-head"><span class="kicker">01 · Stance</span><h2 id="stance-title">Three words. One test.</h2></div>
+      <div class="stance-text"><span>Visually powerful.</span><span>Intellectually elegant.</span><span>Human.</span></div>
+      <p class="bottom-note">The first two give the work authority. The third makes it approachable and understandable. Every choice should serve all three.</p>
+      <nav class="contents" aria-label="Guidelines sections"><a href="#registers">Registers</a><a href="#grounds">Grounds</a><a href="#red">Red</a><a href="#type">Type</a><a href="#logos">Logos</a><a href="#tiers">Rules</a></nav>
+    </section>
+
+    <section class="spread spread--white" id="registers" data-dk-register="Working" aria-labelledby="registers-title">
+      <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>Three registers</span><span class="datum">02</span></div>
+      <div class="section-head"><span class="kicker">02 · System</span><div><h2 id="registers-title">Choose who talks.</h2><p class="dek">Each page has one job. The design follows the thing carrying the meaning.</p></div></div>
+      <div class="register-intro">
+        <div><span class="num">01 / TYPE</span><strong>Statement</strong><p>Few words stop the reader. Covers, dividers, posters, title slides.</p></div>
+        <div><span class="num">02 / WORDS</span><strong>Working</strong><p>A reader can follow an argument. Proposals, reports, web pages, deck interiors.</p></div>
+        <div><span class="num">03 / PICTURE</span><strong>Explaining</strong><p>A relationship becomes visible. Field guides, diagrams, teaching slides.</p></div>
+      </div>
+    </section>
+
+    <section class="spread spread--black" id="statement" data-dk-register="Statement" aria-labelledby="statement-title">
+      <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>Register 01 / Statement</span><span class="datum">03</span></div>
+      <div class="section-head"><span class="kicker" style="color:var(--white)">Type talks</span><div><h2 id="statement-title">Make a moment.</h2><p class="dek">One claim, generous space, a deliberate stop.</p></div></div>
+      <div class="statement-demo"><strong>Think in systems<span class="red">.</span></strong><small>Poster scale is earned. It does not belong on every page.</small></div>
+    </section>
+
+    <section class="spread spread--white" id="working" data-dk-register="Working" aria-labelledby="working-title">
+      <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>Register 02 / Working</span><span class="datum">04</span></div>
+      <div class="section-head"><span class="kicker">Words talk</span><div><h2 id="working-title">Help the reader move.</h2><p class="dek">Give the page a visible route through the idea.</p></div></div>
+      <div class="working-demo"><span class="mini-label red">01 / A point</span><div><h3>Start with the decision the reader needs to make.</h3><p>Use a strong heading, readable sentences, and space between steps. Let rules organize the work. Use a table when people need to compare, and a picture when the relationship matters more than the words.</p></div><aside><span class="mini-label">What belongs here</span><p>Proposals, reports, interior slides, websites, and working documents.</p></aside></div>
+    </section>
+
+    <section class="spread spread--soft" id="explaining" data-dk-register="Explaining" aria-labelledby="explaining-title">
+      <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>Register 03 / Explaining</span><span class="datum">05</span></div>
+      <div class="section-head"><span class="kicker">Picture talks</span><div><h2 id="explaining-title">Draw the relationship.</h2><p class="dek">One framework. One editorial metaphor. The drawing should make the idea easier to see.</p></div></div>
+      <div class="explaining-demo"><div><h3>Make the handoff visible<span class="red">.</span></h3><p>A picture can show ownership moving between people faster than a paragraph can explain it. The headline states the claim; the illustration proves it.</p><p class="slot-prompt"><strong>Image prompt:</strong> Flat vector editorial illustration on soft paper. Show one adult passing a clearly marked task to another; a smaller off-white robot supports the handoff. Use one red mark at the moment ownership changes. Smooth matte shapes, economical contours, no texture or text. Leave the upper-left open for a headline.</p></div><div class="image-slot" role="img" aria-label="Illustration slot for a human and small robot handoff scene"><span class="mini-label">Image slot / Explaining</span><div class="slot-center">The picture goes here.<br>The prompt is ready.</div><span class="slot-footer mono">1 framework · 1 metaphor · 1 point</span></div></div>
+    </section>
+
+    <section class="spread spread--white" id="grounds" data-dk-register="Working" aria-labelledby="grounds-title">
+      <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>Grounds</span><span class="datum">06</span></div>
+      <div class="section-head"><span class="kicker">06 · Color</span><div><h2 id="grounds-title">Three places to stand.</h2><p class="dek">White is for work. Khaki marks a threshold. Black is a statement.</p></div></div>
+      <div class="swatches"><div class="swatch swatch--white"><strong>White</strong><span class="mono">#FFFFFF / WORK</span></div><div class="swatch swatch--paper"><strong>Khaki paper</strong><span class="mono">#ECE3D7 / THRESHOLD</span></div><div class="swatch swatch--black"><strong>Black</strong><span class="mono">#000000 / STATEMENT</span></div></div>
+      <p class="meta-caption">Soft paper is an aside in Working pages and may be a page ground in Explaining. Utility grey belongs in tables. Neither becomes a fourth general-purpose ground.</p>
+    </section>
+
+    <section class="spread spread--white" id="red" data-dk-register="Working" aria-labelledby="red-title">
+      <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>Red</span><span class="datum">07</span></div>
+      <div class="section-head"><span class="kicker">07 · Attention</span><div><h2 id="red-title">Red has three jobs.</h2><p class="dek">Orient. Point. Act. A page gets one red point.</p></div></div>
+      <div class="editorial-rows"><div class="editorial-row"><span class="mini-label red">01 / Orient</span><h3>Show where we are.</h3><p>A small number or marker helps the reader find the section.</p></div><div class="editorial-row"><span class="mini-label">02 / Point</span><h3>Make <span class="red">one</span> thing impossible to miss.</h3><p>The word, number, or changed detail carrying the argument.</p></div><div class="editorial-row"><span class="mini-label">03 / Act</span><h3>Give the next step a place.</h3><p><span class="sample-cta">See the next step</span></p></div></div>
+    </section>
+
+    <section class="spread spread--white" id="type" data-dk-register="Working" aria-labelledby="type-title">
+      <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>Typography</span><span class="datum">08</span></div>
+      <div class="section-head"><span class="kicker">08 · Type</span><div><h2 id="type-title">Give each voice its job.</h2><p class="dek">Helvetica signals. Century reads. Mono names data. Caveat feels written by hand.</p></div></div>
+      <div class="type-ratios"><div class="type-row"><span class="mono">1.50 / STATEMENT</span><strong>Large contrast</strong><span>Type carries the page. Few sizes and a decisive hierarchy.</span></div><div class="type-row"><span class="mono">1.25 / WORKING</span><strong>Reading rhythm</strong><span>Readable body text and a clear path through the argument.</span></div><div class="type-row"><span class="mono">1.333 / EXPLAINING</span><strong>Picture first</strong><span>Labels and notes support the drawing.</span></div></div>
+      <p class="meta-caption">Screen floors: 12px meta, 15px body. Slides: 24px body. The sizes in each register are drawn from a ratio, then checked at the actual viewing size.</p>
+    </section>
+
+    <section class="spread spread--white" id="meta" data-dk-register="Working" aria-labelledby="meta-title">
+      <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>The meta row</span><span class="datum">09</span></div>
+      <div class="section-head"><span class="kicker">09 · Orientation</span><div><h2 id="meta-title">Tell us where we are.</h2><p class="dek">A small line at the top gives a document its bearings.</p></div></div>
+      <div class="meta-example"><img src="assets/logo-dk-box.svg" alt=""><span>DK Consulting</span><span>Working document</span><span>09</span></div>
+      <p class="meta-caption">The DK box sits at the left. Labels are Helvetica capitals. Data uses mono. Hairlines create structure without becoming decoration.</p>
+    </section>
+
+    <section class="spread spread--white" id="grid" data-dk-register="Working" aria-labelledby="grid-title">
+      <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>The grid</span><span class="datum">10</span></div>
+      <div class="section-head"><span class="kicker">10 · Layout</span><div><h2 id="grid-title">Make space do work.</h2><p class="dek">Twelve columns give the page a repeatable skeleton, while the content chooses its shape.</p></div></div>
+      <div class="grid-demo" aria-label="Twelve-column grid"><span>01</span><span>02</span><span>03</span><span>04</span><span>05</span><span>06</span><span>07</span><span>08</span><span>09</span><span>10</span><span>11</span><span>12</span></div>
+      <p class="grid-note">Outer margin: 5% of the short side. Gutter: 2% of width. Rule weights: 0.5, 1, and 2px.</p>
+    </section>
+
+    <section class="spread spread--white" id="icons" data-dk-register="Working" aria-labelledby="icons-title">
+      <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>Icons</span><span class="datum">11</span></div>
+      <div class="section-head"><span class="kicker">11 · Wayfinding</span><div><h2 id="icons-title">Use one icon family.</h2><p class="dek">Quiet signs help readers move. They should never compete with the idea.</p></div></div>
+      <div class="icon-set"><div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg><span class="mini-label">Move forward</span></div><div><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16"/><path d="M7 9h10M7 13h8"/></svg><span class="mini-label">Read a note</span></div><div><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7v6h4"/></svg><span class="mini-label">Mark time</span></div></div>
+      <p class="meta-caption">Working icons use an inline 24-unit grid, 1.5 stroke, square ends, and the current text color. Drawn Explaining details belong inside the illustration.</p>
+    </section>
+
+    <section class="spread spread--soft" id="handwriting" data-dk-register="Explaining" aria-labelledby="handwriting-title">
+      <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>Handwriting</span><span class="datum">12</span></div>
+      <div class="section-head"><span class="kicker">12 · Human trace</span><div><h2 id="handwriting-title">Write where a person would.</h2><p class="dek">Caveat belongs in a margin, a quote, or a whiteboard inside an image.</p></div></div>
+      <div class="hand-demo"><blockquote>What changed?</blockquote><p>The publication speaks in Helvetica and Century. Handwriting belongs to depicted thought, never to navigation or a long paragraph. Image prompts use the same single description so the drawn and typeset worlds agree.</p></div>
+    </section>
+
+    <section class="spread spread--white" id="illustration" data-dk-register="Working" aria-labelledby="illustration-title">
+      <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>Illustration and slots</span><span class="datum">13</span></div>
+      <div class="section-head"><span class="kicker">13 · Image making</span><div><h2 id="illustration-title">Prompt the picture. Keep the slot.</h2><p class="dek">The prompt states the claim, the metaphor, the actors, palette, red event, aspect ratio, and space reserved for text.</p></div></div>
+      <div class="editorial-rows"><div class="editorial-row"><span class="mono">01 / FRAMING</span><h3>Name the relationship.</h3><p>One framework and one metaphor give the image a reason to exist.</p></div><div class="editorial-row"><span class="mono">02 / FORM</span><h3>Keep shapes smooth.</h3><p>Flat matte color, economical contours, expressive but stylized people.</p></div><div class="editorial-row"><span class="mono">03 / HANDOFF</span><h3>Leave the image slot visible<span class="red">.</span></h3><p>It stays labeled with its full prompt until an approved PNG arrives.</p></div></div>
+    </section>
+
+    <section class="spread spread--white" id="logos" data-dk-register="Working" aria-labelledby="logos-title">
+      <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>Marks</span><span class="datum">14</span></div>
+      <div class="section-head"><span class="kicker">14 · Identity</span><div><h2 id="logos-title">Know which mark speaks.</h2><p class="dek">Use the DK box for DK pages. The +AI mark takes its place on community pages.</p></div></div>
+      <div class="logo-demo"><div><span class="mini-label">DK Consulting</span><img src="assets/logo-dk-box.svg" alt="DK Consulting box logo"><p class="dek">Top left, at two meta-row line heights. The wordmark appears once in a document.</p></div><div><span class="mini-label">+AI community</span><img src="assets/logo-plus-ai.svg" alt="+AI logo"><p class="dek">Helvetica Bold in statement red. Use it on community surfaces, without the DK box.</p></div></div>
+    </section>
+
+    <section class="spread spread--white" id="tiers" data-dk-register="Working" aria-labelledby="tiers-title">
+      <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>How rules work</span><span class="datum">15</span></div>
+      <div class="section-head"><span class="kicker">The operating rule</span><div><h2 id="tiers-title">Know what can bend.</h2><p class="dek">A useful system tells its makers where judgment belongs.</p></div></div>
+      <div class="tier-list"><article><span class="mono">01 / MUST</span><h3>Guardrails</h3><p>Font roles, grounds, red, logo positions, readability floors, and the things that visibly break the brand.</p></article><article><span class="mono">02 / USUAL</span><h3>Defaults</h3><p>Registers, ratios, grid, meta row, icons and spacing. Depart with a clear reason.</p></article><article><span class="mono">03 / CHOOSE</span><h3>License</h3><p>Composition, scale within range, metaphor, crop and the one red point need a designer’s judgment.</p></article></div>
+    </section>
+
+    <section class="spread spread--paper back" id="back" data-dk-register="Statement" aria-labelledby="back-title">
+      <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>DK Designer</span><span class="datum">END / V2</span></div>
+      <div class="close"><h2 id="back-title">Make it mean something<span class="red">.</span></h2><img class="wordmark" src="assets/logo-dk-wordmark.svg" alt="Danoosh Kapadia Consulting"><img class="signature" src="assets/signature-danoosh.svg" alt="Danoosh's signature"></div>
+      <footer><span>Visually powerful. Intellectually elegant. Human.</span><span>DK Consulting · 2026</span></footer>
+    </section>
+  </main>
+</body>
+</html>
