@@ -22,7 +22,7 @@
       --page: min(1400px, 100%);
     }
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: auto; }
     body { margin: 0; color: var(--ink); background: var(--white); font-family: var(--serif); }
     img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .2em; }
@@ -70,10 +70,10 @@
     .cover h1 span { color: var(--white); display: block; }
     .cover .subtitle { margin-top: 52px; font: 20px/1.45 var(--serif); max-width: 27ch; }
     .cover .end-mark { align-self: end; color: var(--red); font: 700 90px/.8 var(--sans); }
-    .stance-text { grid-column: 2; margin-top: 90px; font: 700 clamp(48px, 6.6vw, 88px)/1.01 var(--sans); letter-spacing: -.04em; max-width: 13ch; }
+    .stance-text { grid-column: 2; margin-top: 52px; font: 700 clamp(48px, 6.6vw, 88px)/1.01 var(--sans); letter-spacing: -.04em; max-width: 13ch; }
     .stance-text span { display: block; }
     .stance-text span:last-child { color: var(--red); }
-    .bottom-note { margin-top: clamp(60px, 13vw, 180px); margin-left: 17%; max-width: 42ch; font: 20px/1.5 var(--serif); }
+    .bottom-note { margin-top: 48px; margin-left: 17%; max-width: 42ch; font: 20px/1.5 var(--serif); }
     .register-intro { margin-top: 64px; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 2px solid currentColor; }
     .register-intro > div { min-height: 280px; padding: 20px 20px 30px 0; border-bottom: .5px solid currentColor; }
     .register-intro > div + div { border-left: .5px solid currentColor; padding-left: 20px; }
@@ -124,7 +124,7 @@
     .example-pair .image-frame img { max-height: 460px; }
     .underline-word { position: relative; display: inline-block; white-space: nowrap; }
     .underline-word svg { position: absolute; left: 0; right: 0; bottom: -.15em; width: 100%; height: .23em; overflow: visible; pointer-events: none; }
-    .underline-word svg path { fill: none; stroke: var(--red); stroke-width: 2; stroke-linecap: round; }
+    .underline-word svg path { fill: none; stroke: var(--red); stroke-width: 3.5px; stroke-linecap: round; vector-effect: non-scaling-stroke; }
     .type-ratios { margin-top: 80px; border-top: 2px solid var(--black); }
     .type-row { display: grid; grid-template-columns: 2fr 3fr 7fr; align-items: baseline; gap: 2%; padding: 30px 0; border-bottom: .5px solid var(--black); }
     .type-row strong { font: 700 40px/1 var(--sans); letter-spacing: -.025em; }
@@ -138,7 +138,7 @@
     .grid-note { margin-top: 28px; font: 17px/1.5 var(--serif); }
     .icon-set { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2%; margin-top: 85px; }
     .icon-set > div { border-top: 1px solid var(--black); padding-top: 24px; min-height: 180px; }
-    .icon-set svg { width: 44px; height: 44px; display: block; margin-bottom: 26px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; stroke-linejoin: square; }
+    .icon-set svg { width: 32px; height: 32px; display: block; margin-bottom: 26px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
     .hand-demo { margin-top: 75px; display: grid; grid-template-columns: 5fr 7fr; gap: 4%; align-items: end; }
     .hand-demo blockquote { margin: 0; max-width: 9ch; font: 400 clamp(50px, 7vw, 100px)/.95 var(--hand); }
     .hand-demo p { padding-top: 20px; border-top: 1px solid var(--black); font: 17px/1.55 var(--serif); }
@@ -201,6 +201,27 @@
       a { text-decoration: none; }
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+    .hand-note { font: 400 34px/1.2 var(--hand) !important; margin-block: 24px !important; }
+    .thinking-pair { gap: 5%; }
+    .example-label { border-top: 1px solid var(--black); padding-top: 20px; min-height: 116px; }
+    .example-label h3 { margin: 16px 0 28px; }
+    .framework-canvas { background: var(--soft); border-radius: 24px; padding: 32px 24px; min-height: 432px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; }
+    .pyramid { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; align-items: center; gap: 8px; width: 100%; }
+    .pyramid li { text-align: center; background: var(--paper); border: 1px solid rgba(0,0,0,.22); border-radius: 10px; padding: 10px 8px; width: 48%; }
+    .pyramid li:nth-child(2) { width: 61%; }.pyramid li:nth-child(3) { width: 74%; }.pyramid li:nth-child(4) { width: 87%; }.pyramid li:nth-child(5) { width: 100%; }
+    .tier-heading { display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:3px; }.tier-heading svg { width:20px;height:20px;flex-shrink:0;fill:none;stroke:var(--ink);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round; }
+    .pyramid strong { display: block; font: 700 17px/1.2 var(--sans); }
+    .pyramid span { font: 15px/1.35 var(--serif); }
+    .shared-canvas { flex-direction: column; justify-content: start; gap: 28px; }
+    .shared-note { display: grid; grid-template-columns: 36px 1fr; gap: 6px 12px; align-items: center; width: 100%; padding-bottom: 24px; border-bottom: 1px solid rgba(0,0,0,.25); }
+    .shared-note svg { grid-row: span 2; width: 32px; height: 32px; fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .shared-note strong { font: 700 20px/1.2 var(--sans); }.shared-note span { font: 15px/1.4 var(--serif); }
+    .sequence { list-style: none; margin: 0; padding: 0; width: 100%; }.sequence li { position: relative; display: grid; grid-template-columns: 40px 1fr; gap: 5px 12px; padding: 0 0 28px; }.sequence li:last-child{padding-bottom:0}.sequence li:not(:last-child)::after { content: ''; position: absolute; left: 15px; top: 29px; bottom: 5px; border-left: 1px solid var(--khaki); }.step-number { grid-row:span 2; font: 12px/28px var(--mono); }.sequence strong{font:700 17px/1.3 var(--sans)}.sequence li>span:last-child{font:15px/1.4 var(--serif)}
+    .comparison-example { margin-top: 80px; }.comparison-head { border-top: 1px solid var(--black); padding-top:24px; display:grid; grid-template-columns:2fr 4fr 6fr; gap:2%; align-items:start; margin-bottom:36px; }.comparison-head h3 { margin:0; font:700 36px/1.06 var(--sans); letter-spacing:-.025em; }.comparison-head p{font:17px/1.5 var(--serif)}
+    .image-frame--flush { padding:0; background:var(--soft); overflow:hidden; }.image-frame--flush a { border-radius:24px 24px 0 0; }.image-frame--flush img { max-height:none; }.comparison-captions{display:grid;grid-template-columns:1fr 1fr;gap:5%;padding:24px!important}.comparison-captions strong{display:block;margin-bottom:6px}
+    .art-family{display:grid;grid-template-columns:repeat(3,1fr);gap:2%;margin-top:56px}.art-family figure{margin:0;min-width:0}.art-family img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:16px}.art-family figure:first-child img{object-position:75% 60%}.art-family figcaption{font:15px/1.4 var(--serif);padding-top:12px}.icon-set{row-gap:32px}.icon-set>div{min-height:140px}
+    @media (max-width:800px){.thinking-example+.thinking-example{margin-top:40px}.framework-canvas{min-height:0;padding:24px 16px}.pyramid li{width:62%}.pyramid li:nth-child(2){width:71%}.pyramid li:nth-child(3){width:80%}.pyramid li:nth-child(4){width:90%}.pyramid li:nth-child(5){width:100%}.comparison-head{grid-template-columns:1fr;gap:20px}.comparison-head h3{font-size:32px}.art-family{gap:12px;grid-template-columns:1fr}.art-family img{aspect-ratio:3/2}.icon-set{grid-template-columns:repeat(2,1fr)}.comparison-captions{padding:16px!important;font-size:14px}.comparison-captions strong{font-size:14px}}
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -224,9 +245,15 @@
       <nav class="contents" aria-label="Guidelines sections"><a href="#registers">Registers</a><a href="#visual-thinking">Examples</a><a href="#grounds">Grounds</a><a href="#red">Red</a><a href="#type">Type</a><a href="#logos">Logos</a><a href="#tiers">Rules</a></nav>
     </section>
 
+    <section class="spread spread--soft" id="human-picture" data-dk-register="Explaining" aria-labelledby="human-picture-title">
+      <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>The human picture</span><span class="datum">02</span></div>
+      <div class="section-head"><span class="kicker">Editorial illustration</span><div><h2 id="human-picture-title">Let people carry the meaning.</h2><p class="dek">Warmth comes from a recognizable moment of work: a gesture, a shared focus, a choice made together.</p></div></div>
+      <div class="visual-story visual-story--reverse"><figure class="image-frame"><a href="assets/illustration-collaboration.png" target="_blank" rel="noopener" aria-label="Open collaboration illustration at full size"><img width="1536" height="1024" src="assets/illustration-collaboration.png" alt="Two colleagues use evidence sorted by a supporting humanoid robot to make a decision together at a white oak table" loading="lazy"></a><figcaption><strong>Collaboration.</strong> The robot sorts the evidence. People connect it to a decision.</figcaption></figure><div><h3>The scene should help us understand the work.</h3><p>Keep figures expressive, with clear gestures and a shared focus. The warm cream, white oak, and quiet brass of this workspace belong to the same world as the mirror. When AI belongs in the story, its humanoid companion stands about shoulder height. Warm off-white, gentle curves, small warm blue-green teal accents, and an attentive expression make its supporting role clear. Keep this robot’s design consistent across images; adapt the people and setting to the client. The human always leads.</p><p>A plant, brass lamp, or a few post-its can make a setting feel lived in. Choose what serves the scene; the whole prop collection never needs to appear at once.</p></div></div>
+    </section>
+
     <section class="spread spread--white" id="registers" data-dk-register="Working" aria-labelledby="registers-title">
-      <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>Three registers</span><span class="datum">02</span></div>
-      <div class="section-head"><span class="kicker">02 · System</span><div><h2 id="registers-title">Let the idea lead.</h2><p class="dek">Some ideas need a bold line. Others need room to read or a picture to think with. Choose the voice that helps the reader most.</p></div></div>
+      <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>Three registers</span><span class="datum">03</span></div>
+      <div class="section-head"><span class="kicker">03 · System</span><div><h2 id="registers-title">Let the idea lead.</h2><p class="dek">Some ideas need a bold line. Others need room to read or a picture to think with. Choose the voice that helps the reader most.</p></div></div>
       <div class="register-intro">
         <div><span class="num">01 / TYPE</span><strong>Statement</strong><p>Few words stop the reader. Covers, dividers, posters, title slides.</p></div>
         <div><span class="num">02 / WORDS</span><strong>Working</strong><p>A reader can follow an argument. Proposals, reports, web pages, deck interiors.</p></div>
@@ -235,39 +262,34 @@
     </section>
 
     <section class="spread spread--black" id="statement" data-dk-register="Statement" aria-labelledby="statement-title">
-      <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>Register 01 / Statement</span><span class="datum">03</span></div>
+      <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>Register 01 / Statement</span><span class="datum">04</span></div>
       <div class="section-head"><span class="kicker" style="color:var(--white)">Type talks</span><div><h2 id="statement-title">Make a moment.</h2><p class="dek">One claim, generous space, a deliberate stop.</p></div></div>
       <div class="statement-demo"><strong>Think in systems<span class="red">.</span></strong><small>Poster scale is earned. It does not belong on every page.</small></div>
     </section>
 
     <section class="spread spread--white" id="working" data-dk-register="Working" aria-labelledby="working-title">
-      <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>Register 02 / Working</span><span class="datum">04</span></div>
+      <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>Register 02 / Working</span><span class="datum">05</span></div>
       <div class="section-head"><span class="kicker">Words talk</span><div><h2 id="working-title">Make the next step clear.</h2><p class="dek">A reader should feel guided through the work, with enough space to think along the way.</p></div></div>
       <div class="working-demo"><span class="mini-label red">01 / A point</span><div><h3>Start with the decision the reader needs to make.</h3><p>Use a strong heading, readable sentences, and space between steps. Let rules organize the work. Use a table when people need to compare, and a picture when the relationship matters more than the words.</p></div><aside><span class="mini-label">What belongs here</span><p>Proposals, reports, interior slides, websites, and working documents.</p></aside></div>
     </section>
 
     <section class="spread spread--soft" id="explaining" data-dk-register="Explaining" aria-labelledby="explaining-title">
-      <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>Register 03 / Explaining</span><span class="datum">05</span></div>
+      <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>Register 03 / Explaining</span><span class="datum">06</span></div>
       <div class="section-head"><span class="kicker">Picture talks</span><div><h2 id="explaining-title">Show the relationship.</h2><p class="dek">A framework gives the idea shape. An editorial image makes it easier to remember.</p></div></div>
-      <div class="explaining-demo"><div><h3>Evidence can change what we <span class="underline-word">see<svg viewBox="0 0 100 15" preserveAspectRatio="none" aria-hidden="true"><path d="M2 11 C25 7 64 12 98 5"/></svg></span>.</h3><p>AI can sift through what we have recorded and help us notice a pattern we could not see alone. Here, the robot gathers the evidence; the woman recognizes what it means for her. The human owns the insight and decides what to do with it.</p><p class="image-note">OPEN THE IMAGE TO SEE IT FULL SIZE →</p></div><figure class="image-frame"><a href="assets/illustration-mirror.png" target="_blank" rel="noopener" aria-label="Open mirror illustration at full size"><img src="assets/illustration-mirror.png" alt="A woman recognizes a personal pattern in a mirror calendar as a humanoid robot helps connect her collected information" loading="lazy"></a><figcaption><strong>Mirror metaphor.</strong> From scattered information to a pattern a person can recognize in herself.</figcaption></figure></div>
+      <div class="explaining-demo"><div><h3>Reflection can change what we <span class="underline-word">see<svg viewBox="0 0 100 15" preserveAspectRatio="none" aria-hidden="true"><path d="M2 11 C25 7 64 12 98 5"/></svg></span>.</h3><p>AI can sift through what we have recorded and help us notice a pattern we could not see alone. Here, the robot gathers the evidence; the woman recognizes what it means for her. The human owns the insight and decides what to do with it.</p><p class="image-note">OPEN THE IMAGE TO SEE IT FULL SIZE →</p></div><figure class="image-frame"><a href="assets/illustration-mirror.png" target="_blank" rel="noopener" aria-label="Open mirror illustration at full size"><img width="1199" height="1312" src="assets/illustration-mirror.png" alt="A woman recognizes a personal pattern in a mirror calendar as a humanoid robot helps connect her collected information" loading="lazy"></a><figcaption><strong>Mirror metaphor.</strong> From scattered information to a pattern a person can recognize in herself.</figcaption></figure></div>
     </section>
 
     <section class="spread spread--white" id="visual-thinking" data-dk-register="Explaining" aria-labelledby="visual-thinking-title">
-      <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>Visual thinking in practice</span><span class="datum">06</span></div>
+      <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>Visual thinking in practice</span><span class="datum">07</span></div>
       <div class="section-head"><span class="kicker kicker--red">Ways to explain</span><div><h2 id="visual-thinking-title">Give people something to point at.</h2><p class="dek">A good visual makes a relationship easier to discuss. Choose its shape from the question the audience needs to answer.</p></div></div>
-      <div class="example-pair">
-        <article><figure class="image-frame"><a href="assets/framework-alignment.png" target="_blank" rel="noopener" aria-label="Open alignment framework at full size"><img src="assets/framework-alignment.png" alt="Pyramid framework showing levels of AI and business alignment" loading="lazy"></a><figcaption><strong>Framework / levels.</strong> The pyramid makes levels visible, so a group can see what supports what.</figcaption></figure><h3>When the question is “how does it fit?”</h3><p>Use a framework that exposes structure. A pyramid can show dependencies and help people locate the level under discussion.</p></article>
-        <article><figure class="image-frame"><a href="assets/explainer-shared-workspaces.png" target="_blank" rel="noopener" aria-label="Open shared workspaces timeline at full size"><img src="assets/explainer-shared-workspaces.png" alt="Timeline explainer showing how shared workspaces change over time" loading="lazy"></a><figcaption><strong>Timeline / cause and effect.</strong> The sequence lets the reader follow what changed and what followed.</figcaption></figure><h3>When the question is “what changed?”</h3><p>Use a timeline that carries the reader through a sequence. Place the key turn where it can be seen, then make the consequence legible.</p></article>
+      <div class="example-pair thinking-pair">
+        <article class="thinking-example"><div class="example-label"><span class="mono">01 / HIERARCHY</span><h3>What supports what?</h3></div><div class="framework-canvas"><ol class="pyramid" aria-label="Five levels of business alignment, from vision to foundational values"><li><span class="tier-heading"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3-6 10-6 10 6 10 6-3 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/></svg><strong>Vision</strong></span><span>Where we’re going</span></li><li><span class="tier-heading"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V3m0 1c5-4 9 4 14 0v9c-5 4-9-4-14 0"/></svg><strong>Purpose</strong></span><span>Why it matters</span></li><li><span class="tier-heading"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21v-8m0 0H5V4m7 9h7V4M2 7l3-3 3 3m8 0 3-3 3 3"/></svg><strong>Strategy</strong></span><span>The choices we make</span></li><li><span class="tier-heading"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg><strong>Goals</strong></span><span>What progress looks like</span></li><li><span class="tier-heading"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 5 8 9 8 9s8-4 8-9V6l-8-3Z"/><path d="m8 12 3 3 5-6"/></svg><strong>Values</strong></span><span>How we work together</span></li></ol></div><p>A pyramid makes the layers visible. Bring the conversation back to the business before choosing what AI should help with.</p></article>
+        <article class="thinking-example"><div class="example-label"><span class="mono">02 / SEQUENCE</span><h3>How does the idea travel?</h3></div><div class="framework-canvas shared-canvas"><div class="shared-note"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg><strong>A shared note</strong><span>One place both collaborators can read and write.</span></div><ol class="sequence"><li><span class="step-number">01</span><strong>Leave a finding</strong><span>A useful observation is written down.</span></li><li><span class="step-number">02</span><strong>Read in context</strong><span>The next collaborator can understand it.</span></li><li><span class="step-number">03</span><strong>Build on it</strong><span>A response becomes part of the shared work.</span></li></ol></div><p>A sequence shows how one contribution changes the next. Make the shared path visible, along with who can use it.</p></article>
       </div>
-      <div class="visual-story"><div><h3>Same facts. A different frame.</h3><p>A useful comparison holds the situation steady and changes the question. Here, a wider frame makes more options visible. The human sets the question; AI helps explore it.</p><p>Before drawing, name what the reader should see differently. Then keep the people, facts, and scene consistent so the change is easy to spot.</p></div><figure class="image-frame"><a href="assets/framework-reframing.png" target="_blank" rel="noopener" aria-label="Open reframing comparison at full size"><img src="assets/framework-reframing.png" alt="Two views of the same situation compare a narrow cost-cutting frame with a wider strategic frame" loading="lazy"></a><figcaption><strong>Comparison / reframing.</strong> A historical reference for clear visual reasoning. Future illustrations follow the current palette and robot guidance below.</figcaption></figure></div>
-      <p class="meta-caption">These supplied examples are references for visual form and storytelling. Their subject matter is directional; the page does not independently verify claims pictured within them.</p>
+      <div class="comparison-example"><div class="comparison-head"><span class="mono">03 / REFRAMING</span><h3>Same facts. A different frame.</h3><p>Hold the situation steady and change the question. A wider view can reveal options that the first frame left outside.</p></div><figure class="image-frame image-frame--flush"><a href="assets/illustration-reframing.png" target="_blank" rel="noopener" aria-label="Open reframing comparison at full size"><img width="1672" height="941" src="assets/illustration-reframing.png" alt="Matched scenes show a man and his robot examining the same evidence through a narrow frame and a wider frame" loading="lazy"></a><figcaption class="comparison-captions"><span><strong>A narrower question</strong>Fewer facts enter the discussion.</span><span><strong>A wider question</strong>More relationships become available to explore.</span></figcaption></figure><p class="meta-caption">The person sets the frame. The robot helps investigate within it. Keep the people, evidence, and viewpoint consistent so the changed frame is what the reader notices.</p></div>
     </section>
 
-    <section class="spread spread--soft" id="human-picture" data-dk-register="Explaining" aria-labelledby="human-picture-title">
-      <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>The human picture</span><span class="datum">07</span></div>
-      <div class="section-head"><span class="kicker">Editorial illustration</span><div><h2 id="human-picture-title">Let people carry the meaning.</h2><p class="dek">Warmth comes from a recognizable moment of work: a gesture, a shared focus, a choice made together.</p></div></div>
-      <div class="visual-story visual-story--reverse"><figure class="image-frame"><a href="assets/illustration-collaboration.png" target="_blank" rel="noopener" aria-label="Open collaboration illustration at full size"><img src="assets/illustration-collaboration.png" alt="Flat editorial illustration of people collaborating around a shared idea" loading="lazy"></a><figcaption><strong>Collaboration.</strong> The eye goes to the people and the work between them.</figcaption></figure><div><h3>The scene should help us understand the work.</h3><p>Keep figures simplified and expressive. Use matte color and economical contours. When AI belongs in the story, its humanoid companion stands about shoulder height. Warm off-white, gentle curves, small warm blue-green teal accents, and an attentive expression make its supporting role clear. Keep this robot’s design consistent across images; adapt the people and setting to the client. The human always leads.</p><p>Give the illustration a claim to carry. If it only makes the page feel busy, take it out.</p></div></div>
-    </section>
+
 
     <section class="spread spread--white" id="grounds" data-dk-register="Working" aria-labelledby="grounds-title">
       <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>Grounds</span><span class="datum">08</span></div>
@@ -306,20 +328,21 @@
 
     <section class="spread spread--white" id="icons" data-dk-register="Working" aria-labelledby="icons-title">
       <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>Icons</span><span class="datum">13</span></div>
-      <div class="section-head"><span class="kicker">13 · Wayfinding</span><div><h2 id="icons-title">Use one icon family.</h2><p class="dek">Quiet signs help readers move. They should never compete with the idea.</p></div></div>
-      <div class="icon-set"><div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg><span class="mini-label">Move forward</span></div><div><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16"/><path d="M7 9h10M7 13h8"/></svg><span class="mini-label">Read a note</span></div><div><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7v6h4"/></svg><span class="mini-label">Mark time</span></div></div>
-      <p class="meta-caption">Working icons use an inline 24-unit grid, 1.5 stroke, square ends, and the current text color. Drawn Explaining details belong inside the illustration.</p>
+      <div class="section-head"><span class="kicker">13 · Wayfinding</span><div><h2 id="icons-title">A clear sign, a softer hand.</h2><p class="dek">Simple geometry gives each icon its meaning. Gentle curves keep it at home beside the people and the words.</p></div></div>
+      <div class="icon-set"><div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg><span class="mini-label">Move forward</span></div><div><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h10M7 13h8"/></svg><span class="mini-label">Read a note</span></div><div><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7v6h4"/></svg><span class="mini-label">Mark time</span></div><div><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m14.5 14.5 5 5"/></svg><span class="mini-label">Look closer</span></div><div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-8l-5 4v-4H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/></svg><span class="mini-label">Talk it through</span></div><div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg><span class="mini-label">Change the frame</span></div></div>
+      <p class="meta-caption">Keep icons geometric and easy to recognize. Rounded line ends echo the curves in the illustrations and controls. Use one quiet stroke, no filled badges, and a word alongside when the meaning could be unclear. Drawn details stay inside the scene.</p>
     </section>
 
     <section class="spread spread--soft" id="handwriting" data-dk-register="Explaining" aria-labelledby="handwriting-title">
       <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>Handwriting</span><span class="datum">14</span></div>
       <div class="section-head"><span class="kicker">14 · Human trace</span><div><h2 id="handwriting-title">Write where a person would.</h2><p class="dek">Caveat belongs in a margin, a quote, or a whiteboard inside an image.</p></div></div>
-      <div class="hand-demo"><blockquote>What changed?</blockquote><p>The publication speaks in Helvetica and Century. Handwriting belongs to depicted thought, never to navigation or a long paragraph. Image prompts use the same single description so the drawn and typeset worlds agree.</p></div>
+      <div class="visual-story visual-story--reverse"><figure class="image-frame"><a href="assets/illustration-danoosh.png" target="_blank" rel="noopener" aria-label="Open Danoosh character example at full size"><img width="1536" height="1024" src="assets/illustration-danoosh.png" alt="Danoosh, bald with a neatly trimmed salt-and-pepper beard and camel cardigan, coaches a woman as she sketches a relationship on paper" loading="lazy"></a><figcaption><strong>A person’s thinking, on the page.</strong> Handwritten notes belong where someone would actually make them.</figcaption></figure><div><span class="mini-label">Founder example</span><h3>Representing Danoosh.</h3><p>Keep his likeness recognizable: bald head, neatly trimmed salt-and-pepper beard, warm expression, and relaxed, thoughtful manner. Understated knitwear and a simple tee fit this setting.</p><p>Show him coaching, listening, or making sense of something with another person. Include him when the founder belongs in the story; adapt the wider cast and setting to the client.</p><p class="hand-note">What changed?</p><p>The page speaks in Helvetica and Century. A small note in Caveat lets us see the person thinking.</p></div></div>
     </section>
 
     <section class="spread spread--white" id="illustration" data-dk-register="Working" aria-labelledby="illustration-title">
       <div class="meta"><img src="assets/logo-dk-box.svg" alt=""><span>Illustration</span><span class="datum">15</span></div>
       <div class="section-head"><span class="kicker">15 · Image making</span><div><h2 id="illustration-title">Brief the picture with purpose.</h2><p class="dek">Begin with what the image should help someone understand. Then choose the metaphor, actors, palette, and space for type.</p></div></div>
+      <div class="art-family" aria-label="One illustration family across different contexts"><figure><img width="1199" height="1312" src="assets/illustration-mirror.png" alt="Warm mirror scene showing a personal insight" loading="lazy"><figcaption>Personal insight</figcaption></figure><figure><img width="1536" height="1024" src="assets/illustration-collaboration.png" alt="Warm creative workspace showing shared decision making" loading="lazy"><figcaption>Shared decisions</figcaption></figure><figure><img width="1672" height="941" src="assets/illustration-reframing.png" alt="Matched scenes showing a change of frame" loading="lazy"><figcaption>A new perspective</figcaption></figure></div><p class="meta-caption">One visual family, different situations. Preserve the drawing style, warm materials, and robot identity. Adapt the people, setting, and story to the client.</p>
       <div class="editorial-rows"><div class="editorial-row"><span class="mono">01 / FRAMING</span><h3>Name the relationship.</h3><p>One framework and one metaphor give the image a reason to exist.</p></div><div class="editorial-row"><span class="mono">02 / FORM</span><h3>Keep shapes smooth.</h3><p>Flat matte color, economical contours, expressive but stylized people.</p></div><div class="editorial-row"><span class="mono">03 / REVIEW</span><h3>Check what the eye <span class="underline-word">follows<svg viewBox="0 0 100 15" preserveAspectRatio="none" aria-hidden="true"><path d="M2 11 C30 5 65 11 98 5"/></svg></span>.</h3><p>Look at the image at its real size. The main relationship should read before its details do.</p></div></div>
     </section>
 
